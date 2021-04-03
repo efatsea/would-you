@@ -2,15 +2,16 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 
 import LogIn from "./LogIn"
+import Navigation from "./Navigation"
 
 
 class Dashboard extends Component {
 	render(){
     	return(
         	<div>
-          		<nav>Navigation</nav>
           		<LogIn/>
-          		{this.props.questions[2]}
+          		<Navigation/>
+          		
           	</div>
         )
     }

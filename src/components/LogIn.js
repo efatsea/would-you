@@ -27,7 +27,11 @@ class LogIn extends Component {
   }
 
   render() {
-    const {names} = this.props
+    const {names, userAvatar, keys} = this.props
+	const usersLength = []
+	for (var i = 0; i < names.length; i++) {
+        usersLength[i] =i
+    }
 	console.log(this.state)
 	
     
@@ -49,9 +53,10 @@ class LogIn extends Component {
           >
       		
             <option value="0">Choose...</option>
-      		{names.map((name)=>(
-    			 <option value={name}>{name}</option>
+      		{usersLength.map((i)=>(
+    			 <option value={keys[i]} data-icon={userAvatar[i]}>{names[i]}</option>
     		))}
+			
           </Form.Control>
           <Button
 			type="submit" 
@@ -70,9 +75,12 @@ class LogIn extends Component {
 function mapStateToProps ( { users, authedUser } ) {
   	const keys = Object.keys(users);
     const names = keys.map((id)=>(users[id].name));
+  	const userAvatar = keys.map((id)=>(users[id].avatarURL))
 	return {
     	names,
       	authedUser,
+      	userAvatar,
+      	keys
     }
 }
 
