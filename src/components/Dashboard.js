@@ -3,6 +3,7 @@ import { connect } from "react-redux"
 
 import LogIn from "./LogIn"
 import Navigation from "./Navigation"
+import Home from "./Home"
 
 
 class Dashboard extends Component {
@@ -11,6 +12,7 @@ class Dashboard extends Component {
         	<div>
           		<LogIn/>
           		<Navigation/>
+          		<Home/>
           		
           	</div>
         )
