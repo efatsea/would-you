@@ -1,8 +1,16 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 
+import { setAuthedUser } from "../actions/authedUser"
+
 class Navigation extends Component {
-  	
+  	handleClick = (e) => {
+      e.preventDefault()
+      const userName = null
+      const { dispatch} = this.props
+      dispatch(setAuthedUser(userName))
+ 	}
+
 	render(){
     	const { users, authedUser } = this.props
   		const userAvatar =  authedUser ? users[authedUser].avatarURL : null
@@ -21,6 +29,9 @@ class Navigation extends Component {
                     />
 					
 				</span>
+				<button onClick={this.handleClick}>
+					Log Out
+				</button>
           		
           	</div>
         )
