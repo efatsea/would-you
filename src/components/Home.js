@@ -20,7 +20,7 @@ class Home extends Component {
                         	: <p>Waiting...</p>}
           			</ul>
           		</div>
-				<div className="unaswered">
+				<div className="unanswered">
 					
 				</div>
           	</div>
@@ -30,8 +30,13 @@ class Home extends Component {
 }
 
 function mapStateToProps ({ authedUser, users, questions }) {
-	const answeredQ = authedUser ? Object.keys(users[authedUser].answers) : null
-    const unansweredQ = authedUser ? questions.filter(quest => quest !== answeredQ) : null
+	const answeredQ = authedUser ? Object.keys(users[authedUser].answers) : null ;
+    const allQuestions = Object.keys(questions);
+    let unansweredQ =[]
+    
+    
+  	
+  
 	return {
     	authedUser,
 		users,
