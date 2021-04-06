@@ -1,19 +1,21 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 
+import Question from "./Question"
+
 class Home extends Component {
   	
 	render(){
-    	const { users, authedUser, questions, answeredQ } = this.props
-  		console.log(answeredQ)
+    	const { users, authedUser, questions, answeredQ, unansweredQ } = this.props
+  		console.log(unansweredQ)
         
     	return(
         	<div>
      			<div className="answered">
-          			<ul>
+          			<ul>Answered Questions
           				{authedUser
-          					?answeredQ.map((id)=>{
-        						return(<li>{questions[id].optionOne.text}</li>)
+          					?answeredQ.map((data)=>{
+        						return(<li key={data}><Question id ={data}/></li>)
         						})
                         	: <p>Waiting...</p>}
           			</ul>
@@ -29,11 +31,13 @@ class Home extends Component {
 
 function mapStateToProps ({ authedUser, users, questions }) {
 	const answeredQ = authedUser ? Object.keys(users[authedUser].answers) : null
+    const unansweredQ = authedUser ? questions.filter(quest => quest !== answeredQ) : null
 	return {
     	authedUser,
 		users,
       	questions,
-      	answeredQ
+      	answeredQ,
+      	unansweredQ
     }
 }
 
