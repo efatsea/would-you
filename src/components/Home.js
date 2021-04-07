@@ -21,7 +21,13 @@ class Home extends Component {
           			</ul>
           		</div>
 				<div className="unanswered">
-					
+					<ul>Unanswered Questions
+          				{authedUser
+          					?unansweredQ.map((data)=>{
+        						return(<li key={data}><Question id ={data}/></li>)
+        						})
+                        	: <p>Waiting...</p>}
+          			</ul>
 				</div>
           	</div>
         )
@@ -32,7 +38,7 @@ class Home extends Component {
 function mapStateToProps ({ authedUser, users, questions }) {
 	const answeredQ = authedUser ? Object.keys(users[authedUser].answers) : null ;
     const allQuestions = Object.keys(questions);
-    let unansweredQ =[]
+    const unansweredQ = authedUser ? allQuestions.filter(quest => !answeredQ.includes(quest)) : null;
     
     
   	
