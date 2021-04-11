@@ -40,9 +40,6 @@ function mapStateToProps ({ authedUser, users, questions }) {
     const allQuestions = Object.keys(questions);
     const unansweredQ = authedUser ? allQuestions.filter(quest => !answeredQ.includes(quest)) : null;
     
-    
-  	
-  
 	return {
     	authedUser,
 		users,

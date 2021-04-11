@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 
+import QuestionTo from "./QuestionTo"
+
 class Question extends Component {
   	
 	render(){
@@ -22,11 +24,16 @@ class Question extends Component {
 						src={users[author].avatarURL}
 						alt = {`Avatar of ${authorUser}`}
 						width = "30"
+						height = "30"
 					/>
           			<h3>{`${authorUser} asks:`}</h3>
 					<br/>
 					<h4>Would you rather</h4>
 					<p>{`${optionOne.text} or ...`}</p>
+					<button 
+					>See more</button>
+					<QuestionTo id={id}/>
+					
           		</div>
 				
           	</div>

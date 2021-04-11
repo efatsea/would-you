@@ -54,7 +54,7 @@ class LogIn extends Component {
       		
             <option value="0">Choose...</option>
       		{usersLength.map((i)=>(
-    			 <option value={keys[i]} data-icon={userAvatar[i]}>{names[i]}</option>
+    			 <option key={keys[i]} value={keys[i]} data-icon={userAvatar[i]}>{names[i]}</option>
     		))}
 			
           </Form.Control>
