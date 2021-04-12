@@ -11,11 +11,10 @@ class Question extends Component {
         if ( question === null ) {
         	return <p>This question does not exist</p>
         }
-      
+     
       	const {
         		id, author, timestamp, optionOne, optionTwo
         } = question
-  		
         
     	return(
         	<div>

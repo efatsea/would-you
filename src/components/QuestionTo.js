@@ -18,16 +18,19 @@ class QuestionTo extends Component {
     }
     handleClick = (e) => {
       e.preventDefault()
-      const {authedUser, id} = this.props
-      const { dispatch} = this.props
+      const {dispatch, authedUser, id} = this.props
       const { answer } = this.state
-      dispatch(handleAddAnswer(id, authedUser, answer))
+      console.log(authedUser, id, answer)
+      dispatch(handleAddAnswer({
+        authedUser,
+        qid:id, 
+        answer:answer}))
 
     }
   	
 	render(){
       	console.log(this.state.answer)
-    	const { users, question, authorUser } = this.props
+    	const { users, question, authorUser, authedUser } = this.props
         
         if ( question === null ) {
         	return <p>This question does not exist</p>
@@ -37,7 +40,6 @@ class QuestionTo extends Component {
         		id, author, timestamp, optionOne, optionTwo
         } = question
   		
-        
     	return(
         	<div>
      			<div className="question-info">
@@ -85,7 +87,8 @@ function mapStateToProps ({ users, questions, authedUser },{id}) {
 	return {
 		users,
       	question,
-      	authorUser
+      	authorUser,
+		authedUser
       	
     }
 }

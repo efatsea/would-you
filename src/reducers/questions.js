@@ -8,14 +8,14 @@ export default function questions ( state= {}, action ) {
           	...action.questions
         }
       case ADD_ANSWER :
-        const {authedUser,id,answer} = action.answer
+        const {qid, authedUser, answer} = action
         return {
         	...state,
-          [action.id] : {
-          	...state[action.id],
+          [action.qid] : {
+          	...state[action.qid],
           [answer]: {
-            ...state[id][answer],
-            votes: state[id][answer].votes.concat([authedUser])
+            ...state[qid][answer],
+            votes: state[qid][answer].votes.concat([authedUser])
           }
           }
         }

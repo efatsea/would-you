@@ -20,10 +20,10 @@ export function receiveQuestions( questions ) {
     };
 }
 
-function addAnswer ({id, authedUser, answer}) {
+function addAnswer ({qid, authedUser, answer}) {
 	return {
     	type: ADD_ANSWER,
-      	id,
+      	qid,
       	authedUser,
       	answer
     }
