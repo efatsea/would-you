@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import { Redirect } from 'react-router-dom'
 
 import { setAuthedUser } from "../actions/authedUser"
 import Dashboard from "./Dashboard"
@@ -11,6 +12,7 @@ class LogIn extends Component {
   
   state = {
   	userName: null,
+    hasSubmit : false
   }
   handleChange = (e) =>{
   	const userName = e.target.value
@@ -23,10 +25,19 @@ class LogIn extends Component {
 	e.preventDefault()
   	const { dispatch} = this.props
     const { userName } = this.state
+    this.setState(()=>({
+    	hasSubmit: true
+    }))
     dispatch(setAuthedUser(userName))
   }
 
   render() {
+    const { hasSubmit } = this.state
+    if (hasSubmit === true) {
+      return (
+      <Redirect to="/dashboard" />
+      )
+    }
     const {names, userAvatar, keys} = this.props
 	const usersLength = []
 	for (var i = 0; i < names.length; i++) {
