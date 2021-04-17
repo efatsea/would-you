@@ -37,10 +37,11 @@ class Navigation extends Component {
                             Home
                     </NavLink></li>
                     <li><NavLink to ='/' exact activeClassName='active'>
-                            New Questtion
+                            New Question
                     </NavLink></li>
-                    <li><span> New Question </span></li>
-                    <li><span> Leader Board </span></li>
+          			<li><NavLink to ='/' exact activeClassName='active'>
+                            LeaderBoard
+                    </NavLink></li>
                     <li> <span>
                         {`Hello ${userName}`}
                         <img

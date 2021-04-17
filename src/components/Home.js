@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 
 import Question from "./Question"
+import Navigation from "./Navigation"
 
 
 class Home extends Component {
@@ -12,6 +13,7 @@ class Home extends Component {
         
     	return(
         	<div>
+          		<Navigation/>
      			<div className="answered">
           			<ul>Answered Questions
           				{authedUser

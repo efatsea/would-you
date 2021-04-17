@@ -1,10 +1,21 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
+import { Link, withRouter } from 'react-router-dom'
+
 
 import QuestionTo from "./QuestionTo"
 
 class Question extends Component {
-  	
+  	state = {
+    	hasClicked : false 
+    }
+
+	handleClick = (e) => {
+      e.preventDefault()
+      this.setState(()=>({
+      	hasClicked : true
+      }))
+ 	}
 	render(){
     	const { users, question, authorUser } = this.props
         
@@ -15,6 +26,13 @@ class Question extends Component {
       	const {
         		id, author, timestamp, optionOne, optionTwo
         } = question
+		
+		const { hasClicked } = this.state
+        if (hasClicked === true) {
+          return (
+          <QuestionTo id = {id} />
+          )
+        }
         
     	return(
         	<div>
@@ -30,8 +48,9 @@ class Question extends Component {
 					<h4>Would you rather</h4>
 					<p>{`${optionOne.text} or ...`}</p>
 					<button 
+                        onClick = {this.handleClick}
 					>See more</button>
-					<QuestionTo id={id}/>
+					
 					
           		</div>
 				

@@ -10,7 +10,6 @@ class Dashboard extends Component {
 	render(){
     	return(
         	<div>
-          		<Navigation/>
           		<Home/>
           		
           	</div>

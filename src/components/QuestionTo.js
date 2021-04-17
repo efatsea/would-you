@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import { Link, withRouter } from 'react-router-dom'
 
 import { handleAddAnswer } from "../actions/questions"
 
