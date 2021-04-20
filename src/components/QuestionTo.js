@@ -2,8 +2,9 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import { Link, withRouter } from 'react-router-dom'
 
+import  Navigation  from "./Navigation"
+import Poll from "./Poll"
 import { handleAddAnswer } from "../actions/questions"
 
 class QuestionTo extends Component {
@@ -30,7 +31,6 @@ class QuestionTo extends Component {
     }
   	
 	render(){
-      	console.log(this.state.answer)
     	const { users, question, authorUser, authedUser } = this.props
         
         if ( question === null ) {
@@ -40,17 +40,20 @@ class QuestionTo extends Component {
       	const {
         		id, author, timestamp, optionOne, optionTwo
         } = question
-  		
+		const userAvatar =  users[authorUser].avatarURL
+
     	return(
         	<div>
+          		<Navigation/>
      			<div className="question-info">
+          			
           			<img
-						src={users[author].avatarURL}
+						src={userAvatar}
 						alt = {`Avatar of ${authorUser}`}
 						width = "30"
 						height = "30"
 					/>
-          			<h3>{`${authorUser} asks:`}</h3>
+          			<h3>{`${authorUser.name} asks:`}</h3>
 					<br/>
 					<Form onSubmit={this.handleClick} onChange={(e) => this.handleChange(e)}>
                         <Form.Check
@@ -75,21 +78,25 @@ class QuestionTo extends Component {
                         </Button>
 					</Form>
           		</div>
-				
+				<Poll id={id}/>
           	</div>
         )
     }
   
 }
 
-function mapStateToProps ({ users, questions, authedUser },{id}) {
+function mapStateToProps ({ users, questions, authedUser },{match}) {
+	const id = match.params.id
+	console.log(match)
 	const question = questions[id];
-  	const authorUser = users[question.author].name
+	const authorUser = users[question.author].id
+	console.log(authorUser)
 	return {
 		users,
       	question,
       	authorUser,
-		authedUser
+		authedUser,
+		id
       	
     }
 }

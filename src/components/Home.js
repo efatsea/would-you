@@ -13,7 +13,7 @@ class Home extends Component {
         
     	return(
         	<div>
-          		<Navigation/>
+          		
      			<div className="answered">
           			<ul>Answered Questions
           				{authedUser

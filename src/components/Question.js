@@ -30,7 +30,10 @@ class Question extends Component {
 		const { hasClicked } = this.state
         if (hasClicked === true) {
           return (
-          <QuestionTo id = {id} />
+          <Link to = {`questionToAnswer/${id}`}>
+			<QuestionTo id = {id} />
+          </Link>
+          
           )
         }
         
@@ -47,9 +50,10 @@ class Question extends Component {
 					<br/>
 					<h4>Would you rather</h4>
 					<p>{`${optionOne.text} or ...`}</p>
-					<button 
-                        onClick = {this.handleClick}
-					>See more</button>
+					<Link to = {`/questionToAnswer/${id}`}>
+						<button>See more</button>
+					</Link>
+					
 					
 					
           		</div>
@@ -71,4 +75,4 @@ function mapStateToProps ({ users, questions },{id}) {
     }
 }
 
-export default connect(mapStateToProps) (Question);
+export default withRouter(connect(mapStateToProps) (Question));
