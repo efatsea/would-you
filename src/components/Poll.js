@@ -8,7 +8,7 @@ import Card from 'react-bootstrap/Card'
 class Poll extends Component {
   	
 	render(){
-    	const { users, question, authorUser, authedUser } = this.props
+    	const { users, answer, question, authorUser, authedUser } = this.props
         
         if ( question === null ) {
         	return <p>This question does not exist</p>
@@ -20,7 +20,7 @@ class Poll extends Component {
         
         const voteOne = optionOne.votes.length
         const voteTwo = optionTwo.votes.length
-        console.log(voteOne)
+        console.log(answer)
   		
     	return(
           	<Card style={{ width: '18rem' }}>
@@ -28,9 +28,11 @@ class Poll extends Component {
 				<h4>Results:</h4>
               <ListGroup variant="flush">
                 <ListGroup.Item>{optionOne.text}</ListGroup.Item>
-				<ListGroup.Item>{`${voteOne}/3`}</ListGroup.Item>
+				{"optionOne"===answer ? <p>Your vote</p> :null}
+				<ListGroup.Item>{`${voteOne} out of 3 votes`}</ListGroup.Item>
                 <ListGroup.Item>{optionTwo.text}</ListGroup.Item>
-				<ListGroup.Item>{`${voteTwo}/3`}</ListGroup.Item>
+				{"optionTwo"===answer ? <p>Your vote</p> :null}
+				<ListGroup.Item>{`${voteTwo} out of 3 votes`}</ListGroup.Item>
         
               </ListGroup>
             </Card>
@@ -39,15 +41,15 @@ class Poll extends Component {
   
 }
 
-function mapStateToProps ({ users, questions, authedUser },{id}) {
+function mapStateToProps ({ users, questions, authedUser },{id, answer}) {
 	const question = questions[id];
   	const authorUser = users[question.author].name
 	return {
 		users,
       	question,
       	authorUser,
-		authedUser
-      	
+		authedUser,
+      	answer
     }
 }
 

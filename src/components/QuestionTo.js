@@ -78,7 +78,7 @@ class QuestionTo extends Component {
                         </Button>
 					</Form>
           		</div>
-				<Poll id={id}/>
+				<Poll id={id} answer={this.state.answer}/>
           	</div>
         )
     }
