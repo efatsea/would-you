@@ -17,13 +17,20 @@ class Poll extends Component {
       	const {
         		id, author, timestamp, optionOne, optionTwo
         } = question
+        
+        const voteOne = optionOne.votes.length
+        const voteTwo = optionTwo.votes.length
+        console.log(voteOne)
   		
     	return(
           	<Card style={{ width: '18rem' }}>
               <Card.Header>{`Asked by ${authorUser}`}</Card.Header>
+				<h4>Results:</h4>
               <ListGroup variant="flush">
-                <ListGroup.Item>Answer One</ListGroup.Item>
-                <ListGroup.Item>Answer Two</ListGroup.Item>
+                <ListGroup.Item>{optionOne.text}</ListGroup.Item>
+				<ListGroup.Item>{`${voteOne}/3`}</ListGroup.Item>
+                <ListGroup.Item>{optionTwo.text}</ListGroup.Item>
+				<ListGroup.Item>{`${voteTwo}/3`}</ListGroup.Item>
         
               </ListGroup>
             </Card>

@@ -53,7 +53,7 @@ class QuestionTo extends Component {
 						width = "30"
 						height = "30"
 					/>
-          			<h3>{`${authorUser.name} asks:`}</h3>
+          			<h3>{`${users[authorUser].name} asks:`}</h3>
 					<br/>
 					<Form onSubmit={this.handleClick} onChange={(e) => this.handleChange(e)}>
                         <Form.Check
