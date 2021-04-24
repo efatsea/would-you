@@ -10,6 +10,7 @@ import { handleAddAnswer } from "../actions/questions"
 class QuestionTo extends Component {
   	state = {
       answer: null,
+      hasClicked: false
     }
     handleChange = (e) =>{
       const answer = e.target.value
@@ -20,16 +21,19 @@ class QuestionTo extends Component {
     }
     handleClick = (e) => {
       e.preventDefault()
+      this.setState(()=>({
+    	hasClicked : true
+   	  }))
+      document.getElementById("qi").style.display = 'none';
       const {dispatch, authedUser, id} = this.props
       const { answer } = this.state
-      console.log(authedUser, id, answer)
       dispatch(handleAddAnswer({
         authedUser,
         qid:id, 
         answer:answer}))
+      
 
     }
-  	
 	render(){
     	const { users, question, authorUser, authedUser } = this.props
         
@@ -41,11 +45,12 @@ class QuestionTo extends Component {
         		id, author, timestamp, optionOne, optionTwo
         } = question
 		const userAvatar =  users[authorUser].avatarURL
-
+		const hasClicked = this.state.hasClicked
+		
     	return(
         	<div>
           		<Navigation/>
-     			<div className="question-info">
+     			<div id="qi">
           			
           			<img
 						src={userAvatar}
@@ -78,7 +83,7 @@ class QuestionTo extends Component {
                         </Button>
 					</Form>
           		</div>
-				<Poll id={id} answer={this.state.answer}/>
+				{(hasClicked === false) ? <p>Waiting...</p> : <Poll id={id} answer={this.state.answer}/> }
           	</div>
         )
     }
