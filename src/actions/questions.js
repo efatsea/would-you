@@ -1,5 +1,3 @@
-import { saveQuestionAnswer } from "../utils/api"
-
 export const ADD_QUESTION = "ADD_QUESTION";
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const ADD_ANSWER = "ADD_ANSWER"
@@ -20,7 +18,7 @@ export function receiveQuestions( questions ) {
     };
 }
 
-function addAnswer ({qid, authedUser, answer}) {
+export function addAnswer ({ authedUser, qid, answer }) {
 	return {
     	type: ADD_ANSWER,
       	qid,
@@ -29,15 +27,3 @@ function addAnswer ({qid, authedUser, answer}) {
     }
 }
 
-export function handleAddAnswer(info) {
-	return(dispatch) => {
-    	dispatch(addAnswer(info))
-      
-      	return saveQuestionAnswer(info)
-      		.catch((e) => {
-        		console.warn('Error in handleAddAnswer', e)
-			    dispatch(addAnswer(info))	
-			    alert('There was an error, try again ')
-        	})
-    }
-}

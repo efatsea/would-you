@@ -1,6 +1,6 @@
-import { getInitialData } from "../utils/api"
-import { receiveUsers } from "./users"
-import { receiveQuestions } from "./questions"
+import { getInitialData, saveQuestionAnswer } from "../utils/api"
+import { receiveUsers, saveUserAnswer } from "./users"
+import { receiveQuestions, addAnswer } from "./questions"
 import { setAuthedUser } from "./authedUser"
 
 const AUTHED_ID = ""
@@ -15,3 +15,18 @@ export function handleInitialData() {
         })
     }
 }
+
+export function handleUserAnswer({authedUser, qid, answer}) {
+	return (dispatch) => {
+    	
+        return saveQuestionAnswer({
+        	authedUser ,
+          	qid ,
+          	answer
+        })
+      	.then(()=>{
+        	dispatch(addAnswer({authedUser, qid, answer}))
+        	dispatch(saveUserAnswer({authedUser, qid, answer}))
+        })
+    }
+} 

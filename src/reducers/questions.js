@@ -8,7 +8,7 @@ export default function questions ( state= {}, action ) {
           	...action.questions
         }
       case ADD_ANSWER :
-        const {qid, authedUser, answer} = action
+        const { authedUser, qid, answer} = action
         return {
         	...state,
           [action.qid] : {

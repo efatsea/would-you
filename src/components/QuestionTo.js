@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button'
 
 import  Navigation  from "./Navigation"
 import Poll from "./Poll"
-import { handleAddAnswer } from "../actions/questions"
+import { handleUserAnswer } from "../actions/shared"
 
 class QuestionTo extends Component {
   	state = {
@@ -27,10 +27,11 @@ class QuestionTo extends Component {
       document.getElementById("qi").style.display = 'none';
       const {dispatch, authedUser, id} = this.props
       const { answer } = this.state
-      dispatch(handleAddAnswer({
+      const qid = id
+      dispatch(handleUserAnswer({
         authedUser,
-        qid:id, 
-        answer:answer}))
+        qid, 
+        answer}))
       
 
     }
