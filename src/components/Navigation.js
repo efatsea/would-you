@@ -33,13 +33,13 @@ class Navigation extends Component {
     	return(
         	<nav className = "nav">
           		<ul>
-                    <li><NavLink to ='/home' exact activeClassName='active'>
+                    <li><NavLink to ='/dashboard' exact activeClassName='active'>
                             Home
                     </NavLink></li>
                     <li><NavLink to ='/' exact activeClassName='active'>
                             New Question
                     </NavLink></li>
-          			<li><NavLink to ='/' exact activeClassName='active'>
+          			<li><NavLink to ='/leaderBoard' exact activeClassName='active'>
                             LeaderBoard
                     </NavLink></li>
                     <li> <span>

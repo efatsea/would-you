@@ -8,6 +8,7 @@ import Login from './LogIn'
 import Home from './Home'
 import Question from './Question'
 import QuestionTo from './QuestionTo'
+import LeaderBoard from './LeaderBoard'
 import { handleInitialData } from "../actions/shared";
 
 
@@ -23,6 +24,7 @@ class App extends Component {
       	<div className="App">
       		<Route path = '/' exact component ={Login} />
           	<Route path = '/dashboard' component = {Dashboard} />
+			<Route path = '/leaderBoard' component = {LeaderBoard} />
 			<Route path = '/home' component ={Home} />
 			<Route path = '/question/:id' component ={Question} />
 			<Route path = '/questionToAnswer/:id' component ={QuestionTo} />
