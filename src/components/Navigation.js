@@ -36,7 +36,7 @@ class Navigation extends Component {
                     <li><NavLink to ='/dashboard' exact activeClassName='active'>
                             Home
                     </NavLink></li>
-                    <li><NavLink to ='/' exact activeClassName='active'>
+                    <li><NavLink to ='/newQuestion' exact activeClassName='active'>
                             New Question
                     </NavLink></li>
           			<li><NavLink to ='/leaderBoard' exact activeClassName='active'>
