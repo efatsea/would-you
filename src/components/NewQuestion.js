@@ -3,29 +3,29 @@ import { connect } from "react-redux"
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-
+import { handleAddQuestion } from "../actions/shared"
 import Navigation from "./Navigation"
 
 
 class NewQuestion extends Component {
   	state = {
-      optionOne: null,
-      optionTwo: null,
+      optionOneText: null,
+      optionTwoText: null,
       hasClicked: false
     }
 
   	handleChange = (e) =>{
-      const optionOne = e.target.value
+      const optionOneText = e.target.value
       this.setState(()=>({
-          optionOne
+          optionOneText
       }))
 
     }
 	
 	handleChange2 = (e) =>{
-      const optionTwo = e.target.value
+      const optionTwoText = e.target.value
       this.setState(()=>({
-          optionTwo
+          optionTwoText
       }))
     }
 
@@ -34,6 +34,13 @@ class NewQuestion extends Component {
       this.setState(()=>({
     	hasClicked : true
    	  }))
+      const { optionOneText, optionTwoText } = this.state
+      const { dispatch, authedUser } = this.props
+   
+      dispatch(handleAddQuestion({
+        optionOneText, 
+        optionTwoText,
+      	authedUser}))
     }
   	
 	render(){
