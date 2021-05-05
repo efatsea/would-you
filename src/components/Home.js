@@ -12,10 +12,11 @@ class Home extends Component {
   		console.log(unansweredQ)
         
     	return(
-        	<div>
+        	<div className="home">
           		
      			<div className="answered">
-          			<ul>Answered Questions
+          			<h3>Answered Questions</h3>
+          			<ul>
           				{authedUser
           					?answeredQ.map((data)=>{
         						return(<li key={data}><Question id ={data}/></li>)
@@ -24,7 +25,8 @@ class Home extends Component {
           			</ul>
           		</div>
 				<div className="unanswered">
-					<ul>Unanswered Questions
+					<h3>Unanswered Questions</h3>
+					<ul>
           				{authedUser
           					?unansweredQ.map((data)=>{
         						return(<li key={data}><Question id ={data}/></li>)

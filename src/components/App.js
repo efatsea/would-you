@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
 
-
+import '../style.css'
 import Dashboard from "./Dashboard"
 import Login from './LogIn'
 import Home from './Home'

@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import { Link, withRouter } from 'react-router-dom'
+import Button from 'react-bootstrap/Button'
 
 
 import QuestionTo from "./QuestionTo"
@@ -40,24 +41,23 @@ class Question extends Component {
     	return(
         	<div>
      			<div className="question-info">
-          			<img
-						src={users[author].avatarURL}
-						alt = {`Avatar of ${authorUser}`}
-						width = "30"
-						height = "30"
-					/>
-          			<h3>{`${authorUser} asks:`}</h3>
-					<br/>
-					<h4>Would you rather</h4>
-					<p>{`${optionOne.text} or ...`}</p>
-					<Link to = {`/questionToAnswer/${id}`}>
-						<button>See more</button>
-					</Link>
-					
-					
-					
+					<h3>{`${authorUser} asks:`}</h3>
+					<span className="inline">
+						<img
+                            src={users[author].avatarURL}
+                            alt = {`Avatar of ${authorUser}`}
+                            
+                        />
+						<div className="question-overview">
+							<h5>Would you rather</h5>
+                            <p>{`${optionOne.text} or ...`}</p>
+                            <Link to = {`/questionToAnswer/${id}`}>
+                                <Button style={{color:"#5f7daf", backgroundColor:"#fff", fontWeight:"bold", paddingLeft:"1.5em", paddingRight:"1.5em"}}>See more</Button>
+                            </Link>
+						</div>
+                        
+					</span>
           		</div>
-				
           	</div>
         )
     }

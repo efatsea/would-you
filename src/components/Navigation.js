@@ -2,6 +2,8 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import { Redirect, NavLink } from 'react-router-dom'
 import { setAuthedUser } from "../actions/authedUser"
+import Button from 'react-bootstrap/Button'
+
 
 class Navigation extends Component {
   
@@ -31,29 +33,31 @@ class Navigation extends Component {
   		const userAvatar =  authedUser ? users[authedUser].avatarURL : null
         const userName = authedUser ? users[authedUser].name : null
     	return(
-        	<nav className = "nav">
+        	<nav className = "navi">
           		<ul>
                     <li><NavLink to ='/dashboard' exact activeClassName='active'>
                             Home
                     </NavLink></li>
                     <li><NavLink to ='/newQuestion' exact activeClassName='active'>
-                            New Question
+                            New_Question
                     </NavLink></li>
           			<li><NavLink to ='/leaderBoard' exact activeClassName='active'>
                             LeaderBoard
                     </NavLink></li>
-                    <li> <span>
+          			<hr/>
+                    <li >
                         {`Hello ${userName}`}
-                        <img
+                    </li>
+					<li>
+						<img
                           src={userAvatar}
                           width = "50"
                           heigth = "50"
                         />
-
-                    </span></li>
-                    <li><button onClick={this.handleClick}>
+					</li>
+                    <li><Button style={{ backgroundColor:"#bf6464", border:"0px"}} onClick={this.handleClick}>
                         Log Out
-                    </button></li>
+                    </Button></li>
           		</ul>
           	</nav>
         )
