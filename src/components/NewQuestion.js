@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import { Redirect } from 'react-router-dom'
 
 import { handleAddQuestion } from "../actions/shared"
 import Navigation from "./Navigation"
@@ -44,7 +45,12 @@ class NewQuestion extends Component {
     }
   	
 	render(){
-
+		const { hasClicked } = this.state
+        if (hasClicked === true) {
+          return (
+          <Redirect to="/dashboard" />
+          )
+        }
     	const { users, authedUser, questions } = this.props
 
     	return(

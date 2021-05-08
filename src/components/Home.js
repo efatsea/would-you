@@ -10,8 +10,8 @@ import Question from "./Question"
 
 class Home extends Component {
   	state = {
-      anClicked : true,
-      unanClicked : false
+      anClicked : false,
+      unanClicked : true
     }
     handleAnClicked = (e) =>{
       const an = document.getElementById("an")
@@ -51,27 +51,27 @@ class Home extends Component {
           <div>
           	<nav className="questions-nav">
           		<ButtonGroup>
-          			<Button 
-          				onClick = {this.handleAnClicked}
-						size= "lg"
-						className= "ansButton"
-						id = "ansButton"
-						style = {{backgroundColor:"#5f7daf"}}
-						block
-
-					>
-						Answered Questions
-					</Button>
           			<Button
 						bsPrefix = "btn"
 						onClick = {this.handleUnanClicked}
 						className= "ansButton"
 						id= "unansButton"
 						size= "lg"
-						style = {{backgroundColor:"grey"}}
+						style = {{backgroundColor:"#5f7daf"}}
 						block
 					>
 						Unanswered Questions
+					</Button>
+					<Button 
+          				onClick = {this.handleAnClicked}
+						size= "lg"
+						className= "ansButton"
+						id = "ansButton"
+						style = {{backgroundColor:"grey"}}
+						block
+
+					>
+						Answered Questions
 					</Button>
           		</ButtonGroup>
              

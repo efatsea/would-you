@@ -20,7 +20,8 @@ class Poll extends Component {
         
         const voteOne = optionOne.votes.length
         const voteTwo = optionTwo.votes.length
-        console.log(answer)
+       
+       
   		
     	return(
           	<Card style={{ width: '18rem' }}>
@@ -41,7 +42,8 @@ class Poll extends Component {
   
 }
 
-function mapStateToProps ({ users, questions, authedUser },{id, answer}) {
+function mapStateToProps ({ users, questions, authedUser },{id}) {
+	const answer = users[authedUser].answers[id]
 	const question = questions[id];
   	const authorUser = users[question.author].name
 	return {
@@ -49,7 +51,8 @@ function mapStateToProps ({ users, questions, authedUser },{id, answer}) {
       	question,
       	authorUser,
 		authedUser,
-      	answer
+      	answer,
+		
     }
 }
 

@@ -10,7 +10,7 @@ import { handleUserAnswer } from "../actions/shared"
 class QuestionTo extends Component {
   	state = {
       answer: null,
-      hasClicked: false
+      
     }
     handleChange = (e) =>{
       const answer = e.target.value
@@ -21,10 +21,6 @@ class QuestionTo extends Component {
     }
     handleClick = (e) => {
       e.preventDefault()
-      this.setState(()=>({
-    	hasClicked : true
-   	  }))
-      document.getElementById("qi").style.display = 'none';
       const {dispatch, authedUser, id} = this.props
       const { answer } = this.state
       const qid = id
@@ -37,7 +33,6 @@ class QuestionTo extends Component {
     }
 	render(){
     	const { users, question, authorUser, authedUser } = this.props
-        
         if ( question === null ) {
         	return <p>This question does not exist</p>
         }
@@ -45,13 +40,19 @@ class QuestionTo extends Component {
       	const {
         		id, author, timestamp, optionOne, optionTwo
         } = question
+		const ids = Object.keys(users[authedUser].answers)
 		const userAvatar =  users[authorUser].avatarURL
 		const hasClicked = this.state.hasClicked
+		const idA = ids.filter(i => i===id)
+		const idStr = `"${id}"`
+		const answ = users[authedUser].answers.idStr
+		console.log(answ)
 		
     	return(
         	<div>
           		<Navigation/>
-     			<div id="qi">
+          		{ idA[0]===id ? <Poll id= {id} answer={answ}/> 
+     			: <div id="qi">
           			
           			<img
 						src={userAvatar}
@@ -83,8 +84,7 @@ class QuestionTo extends Component {
                           Submit
                         </Button>
 					</Form>
-          		</div>
-				{(hasClicked === false) ? <p>Waiting...</p> : <Poll id={id} answer={this.state.answer}/> }
+          		</div> }
           	</div>
         )
     }
@@ -96,7 +96,6 @@ function mapStateToProps ({ users, questions, authedUser },{match}) {
 	console.log(match)
 	const question = questions[id];
 	const authorUser = users[question.author].id
-	console.log(authorUser)
 	return {
 		users,
       	question,
