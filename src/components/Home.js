@@ -1,21 +1,83 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-
+import Button from 'react-bootstrap/Button'
+import ToggleButton from 'react-bootstrap/ToggleButton'
+import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import Question from "./Question"
 
 
 
+
 class Home extends Component {
-  	
+  	state = {
+      anClicked : true,
+      unanClicked : false
+    }
+    handleAnClicked = (e) =>{
+      const an = document.getElementById("an")
+      const unan = document.getElementById("unan")
+      const anbt = document.getElementById("ansButton")
+      const unanbt = document.getElementById("unansButton")
+      this.setState(()=>({
+          	anClicked : true,
+        	unanClicked : false
+      }))
+	  an.style.display = "block"
+      unan.style.display = "none"
+      anbt.style.backgroundColor = "#5f7daf";
+      unanbt.style.backgroundColor = "grey";
+    }
+	
+	handleUnanClicked = (e) =>{
+      const an = document.getElementById("an")
+      const unan = document.getElementById("unan")
+      const anbt = document.getElementById("ansButton")
+      const unanbt = document.getElementById("unansButton")
+      this.setState(()=>({
+          	anClicked : false,
+        	unanClicked : true
+      }))
+	  unan.style.display = "block"
+      an.style.display = "none"
+      unanbt.style.backgroundColor = "#5f7daf";
+      anbt.style.backgroundColor = "grey";
+    }
+    
+
 	render(){
     	const { users, authedUser, questions, answeredQ, unansweredQ } = this.props
-  		console.log(unansweredQ)
-        
+ 
     	return(
-        	<div className="home">
-          		
-     			<div className="answered">
-          			<h3>Answered Questions</h3>
+          <div>
+          	<nav className="questions-nav">
+          		<ButtonGroup>
+          			<Button 
+          				onClick = {this.handleAnClicked}
+						size= "lg"
+						className= "ansButton"
+						id = "ansButton"
+						style = {{backgroundColor:"#5f7daf"}}
+						block
+
+					>
+						Answered Questions
+					</Button>
+          			<Button
+						bsPrefix = "btn"
+						onClick = {this.handleUnanClicked}
+						className= "ansButton"
+						id= "unansButton"
+						size= "lg"
+						style = {{backgroundColor:"grey"}}
+						block
+					>
+						Unanswered Questions
+					</Button>
+          		</ButtonGroup>
+             
+            </nav>
+        	<div className="home">     		
+     			<div id="an" className="answered" style={{display:"block"}}>
           			<ul>
           				{authedUser
           					?answeredQ.map((data)=>{
@@ -24,8 +86,7 @@ class Home extends Component {
                         	: <p>Waiting...</p>}
           			</ul>
           		</div>
-				<div className="unanswered">
-					<h3>Unanswered Questions</h3>
+				<div id="unan" className="unanswered" style={{display:"none"}}>
 					<ul>
           				{authedUser
           					?unansweredQ.map((data)=>{
@@ -35,6 +96,7 @@ class Home extends Component {
           			</ul>
 				</div>
           	</div>
+		  </div>
         )
     }
   

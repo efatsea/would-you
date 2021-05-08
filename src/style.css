@@ -23,6 +23,7 @@ li {
   	border-bottom: 2px solid #5f7daf;
   	flex-wrap: none;
   	font-size: 0.8em;
+  	margin-bottom: 1em;
   	
 }
 
@@ -48,12 +49,34 @@ li {
   	background-color: #5f7daf;
 }
 
-.home{
+.home {
 	display: flex;
   	flex-direction: row;
   	justify-content: space-around;
  
 }
+
+.questions-nav {
+	display: flex;
+  	flex-direction: row;
+  	justify-content: center;
+  	
+ 
+}
+
+.ansButton:hover,
+.ansButton:active,
+.ansButton.active {
+   	background-color: #5f7daf !important;
+}
+
+.ansButton {
+	margin:0px !important ;
+  
+}
+
+
+
 
 .question-info {
 	border: 2px solid #5f7daf;
