@@ -53,15 +53,16 @@ class QuestionTo extends Component {
           		<Navigation/>
           		{ idA[0]===id ? <Poll id= {id} answer={answ}/> 
      			: <div id="qi">
-          			
+          			<div className = "question-poll">
           			<img
 						src={userAvatar}
 						alt = {`Avatar of ${authorUser}`}
-						width = "30"
-						height = "30"
+						width = "100"
+						height = "100"
 					/>
           			<h3>{`${users[authorUser].name} asks:`}</h3>
 					<br/>
+					<h4>Would you rather</h4>
 					<Form onSubmit={this.handleClick} onChange={(e) => this.handleChange(e)}>
                         <Form.Check
                           type="radio"
@@ -70,6 +71,7 @@ class QuestionTo extends Component {
 						  name = "group1"
 						  value="optionOne"
                         />
+						<h4>or</h4>
                         <Form.Check
                           type="radio"
                           id="optionTwo"
@@ -84,6 +86,7 @@ class QuestionTo extends Component {
                           Submit
                         </Button>
 					</Form>
+				</div>
           		</div> }
           	</div>
         )
@@ -93,7 +96,6 @@ class QuestionTo extends Component {
 
 function mapStateToProps ({ users, questions, authedUser },{match}) {
 	const id = match.params.id
-	console.log(match)
 	const question = questions[id];
 	const authorUser = users[question.author].id
 	return {

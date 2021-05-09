@@ -77,7 +77,7 @@ class Home extends Component {
              
             </nav>
         	<div className="home">     		
-     			<div id="an" className="answered" style={{display:"block"}}>
+     			<div id="an" className="answered" style={{display:"none"}}>
           			<ul>
           				{authedUser
           					?answeredQ.map((data)=>{
@@ -86,7 +86,7 @@ class Home extends Component {
                         	: <p>Waiting...</p>}
           			</ul>
           		</div>
-				<div id="unan" className="unanswered" style={{display:"none"}}>
+				<div id="unan" className="unanswered" style={{display:"block"}}>
 					<ul>
           				{authedUser
           					?unansweredQ.map((data)=>{
@@ -104,8 +104,11 @@ class Home extends Component {
 
 function mapStateToProps ({ authedUser, users, questions }) {
 	const answeredQ = authedUser ? Object.keys(users[authedUser].answers) : null ;
+  	const answeredQue = authedUser ? answeredQ.sort((a,b) => questions[b].timestamp-questions[a].timestamp) :null
     const allQuestions = Object.keys(questions);
     const unansweredQ = authedUser ? allQuestions.filter(quest => !answeredQ.includes(quest)) : null;
+  	const unansweredQue = authedUser ? unansweredQ.sort((a,b) => questions[b].timestamp-questions[a].timestamp) :null;
+  	
     
 	return {
     	authedUser,

@@ -57,18 +57,19 @@ class NewQuestion extends Component {
         	<div className = "NewQuestion">
           		<Navigation/>
           		<h1>Create New Question</h1>
+          		<br/>
           		<Form onSubmit={this.handleClick}>
-          		  <h2>Please Complete the question:</h2>
+          		  <h3>Please Complete the question:</h3>
           		  <br/>
                   <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Would you rather</Form.Label>
+                    <Form.Label><b>Would you rather</b></Form.Label>
                     <Form.Control
           				onChange={(e) => this.handleChange(e)} 
 						placeholder="Enter option one"
 					/>
                   </Form.Group>
                   <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Or</Form.Label>
+                    <Form.Label><b>Or</b></Form.Label>
                     <Form.Control
 						placeholder="Enter option two"
 						onChange={(e) => this.handleChange2(e)}

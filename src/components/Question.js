@@ -31,7 +31,7 @@ class Question extends Component {
 		const { hasClicked } = this.state
         if (hasClicked === true) {
           return (
-          <Link to = {`questionToAnswer/${id}`}>
+          <Link to = {`questions/${id}`}>
 			<QuestionTo id = {id} />
           </Link>
           
@@ -50,8 +50,8 @@ class Question extends Component {
                         />
 						<div className="question-overview">
 							<h5>Would you rather</h5>
-                            <p>{`${optionOne.text} or ...`}</p>
-                            <Link to = {`/questionToAnswer/${id}`}>
+                            <p >{`${optionOne.text} or ...`}</p>
+                            <Link to = {`/questions/${id}`}>
                                 <Button style={{color:"#5f7daf", backgroundColor:"#fff", fontWeight:"bold", paddingLeft:"1.5em", paddingRight:"1.5em"}}>See more</Button>
                             </Link>
 						</div>

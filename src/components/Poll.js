@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 import Form from 'react-bootstrap/Form'
 import ListGroup from 'react-bootstrap/ListGroup'
 import Card from 'react-bootstrap/Card'
-
+import ProgressBar from 'react-bootstrap/ProgressBar'
 
 class Poll extends Component {
   	
@@ -20,23 +20,41 @@ class Poll extends Component {
         
         const voteOne = optionOne.votes.length
         const voteTwo = optionTwo.votes.length
+        const n1 = voteOne*100/3
+        const now1 = n1.toFixed(0)
+        const n2 = voteTwo*100/3
+        const now2 = n2.toFixed(0)
        
        
   		
     	return(
-          	<Card style={{ width: '18rem' }}>
-              <Card.Header>{`Asked by ${authorUser}`}</Card.Header>
-				<h4>Results:</h4>
-              <ListGroup variant="flush">
-                <ListGroup.Item>{optionOne.text}</ListGroup.Item>
-				{"optionOne"===answer ? <p>Your vote</p> :null}
-				<ListGroup.Item>{`${voteOne} out of 3 votes`}</ListGroup.Item>
-                <ListGroup.Item>{optionTwo.text}</ListGroup.Item>
-				{"optionTwo"===answer ? <p>Your vote</p> :null}
-				<ListGroup.Item>{`${voteTwo} out of 3 votes`}</ListGroup.Item>
-        
-              </ListGroup>
-            </Card>
+          	<div className = "question-info" >
+              <h3 >{`Asked by ${authorUser}`}</h3>
+				
+				<span className="inline">
+                  <img
+                  src={users[author].avatarURL}
+                  alt = {`Avatar of ${authorUser}`}
+                  />
+
+                  <div className="question-overview">
+					<h4>Results:</h4>
+					<div className = "question-poll" style={{backgroundColor: "optionOne"===answer ? "#ebefe3" : "white" }}>
+						{"optionOne"===answer ? <p id="vote">Your vote</p> :null}
+                        <p><b>{optionOne.text}</b></p>
+                        <ProgressBar now={now1} label={`${now1}%`} />
+                        <p>{`${voteOne} out of 3 votes`}</p>
+					</div>
+                 	<div className = "question-poll" style={{backgroundColor: "optionTwo"===answer ? "#ebefe3" : "white" }}>
+						{"optionTwo"===answer ? <p id="vote">Your vote</p> :null}
+                        <p><b>{optionTwo.text}</b></p>
+                        <ProgressBar now={now2} label={`${now2}%`} />
+                        <p>{`${voteTwo} out of 3 votes`}</p>
+					</div>
+                  </div>
+                        
+				</span>
+            </div>
         )
     }
   
