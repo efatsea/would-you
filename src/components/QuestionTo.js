@@ -5,6 +5,8 @@ import Button from 'react-bootstrap/Button'
 
 import  Navigation  from "./Navigation"
 import Poll from "./Poll"
+import Alerting from "./Alerting"
+import Page404 from "./Page404"
 import { handleUserAnswer } from "../actions/shared"
 
 class QuestionTo extends Component {
@@ -33,22 +35,24 @@ class QuestionTo extends Component {
     }
 	render(){
     	const { users, question, authorUser, authedUser } = this.props
-        if ( question === null ) {
-        	return <p>This question does not exist</p>
+        if ( !question) {
+        	return <Page404/>
         }
       
       	const {
         		id, author, timestamp, optionOne, optionTwo
         } = question
-		const ids = Object.keys(users[authedUser].answers)
-		const userAvatar =  users[authorUser].avatarURL
-		const hasClicked = this.state.hasClicked
-		const idA = ids.filter(i => i===id)
-		const idStr = `"${id}"`
-		const answ = users[authedUser].answers.idStr
-		console.log(answ)
+		if (authedUser) {
+          const ids = Object.keys(users[authedUser].answers)
+          var userAvatar =  users[authorUser].avatarURL
+          const hasClicked = this.state.hasClicked
+          var idA = ids.filter(i => i===id)
+          const idStr = `"${id}"`
+          var answ = users[authedUser].answers.idStr
+		}
 		
     	return(
+          	authedUser === "" || authedUser === null  ? <Alerting/> : 
         	<div>
           		<Navigation/>
           		{ idA[0]===id ? <Poll id= {id} answer={answ}/> 
@@ -97,7 +101,7 @@ class QuestionTo extends Component {
 function mapStateToProps ({ users, questions, authedUser },{match}) {
 	const id = match.params.id
 	const question = questions[id];
-	const authorUser = users[question.author].id
+	const authorUser = authedUser ? users[question.author].id :null
 	return {
 		users,
       	question,

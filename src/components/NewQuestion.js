@@ -4,8 +4,10 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { Redirect } from 'react-router-dom'
 
+
 import { handleAddQuestion } from "../actions/shared"
 import Navigation from "./Navigation"
+import Alerting from "./Alerting"
 
 
 class NewQuestion extends Component {
@@ -54,6 +56,7 @@ class NewQuestion extends Component {
     	const { users, authedUser, questions } = this.props
 
     	return(
+          	authedUser === "" || authedUser === null  ? <Alerting/> : 
         	<div className = "NewQuestion">
           		<Navigation/>
           		<h1>Create New Question</h1>

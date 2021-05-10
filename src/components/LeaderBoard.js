@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-
+import Alerting from "./Alerting"
 
 import Navigation from "./Navigation"
 
@@ -12,6 +12,7 @@ class LeaderBoard extends Component {
         
         
     	return(
+          	authedUser === "" || authedUser === null  ? <Alerting/> : 
         	<div className = "LeaderBoard">
           	<Navigation/>
               <ul>

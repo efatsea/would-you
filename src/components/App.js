@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
-
+import { Switch } from 'react-router'
 import '../style.css'
 import Dashboard from "./Dashboard"
 import Login from './LogIn'
@@ -10,6 +10,7 @@ import Question from './Question'
 import QuestionTo from './QuestionTo'
 import LeaderBoard from './LeaderBoard'
 import NewQuestion from './NewQuestion'
+import Page404 from "./Page404"
 import { handleInitialData } from "../actions/shared";
 
 
@@ -23,13 +24,17 @@ class App extends Component {
   	return (
       <Router>
       	<div className="App">
-      		<Route path = '/' exact component ={Login} />
-          	<Route path = '/dashboard' component = {Dashboard} />
-			<Route path = '/leaderboard' component = {LeaderBoard} />
-			<Route path = '/home' component ={Home} />
-			<Route path = '/add' component ={NewQuestion} />
-			<Route path = '/question/:id' component ={Question} />
-			<Route path = '/questions/:id' component ={QuestionTo} />
+      		<Switch>
+      			<Route path = '/' exact component ={Login} />
+                <Route path = '/dashboard'  component = {Dashboard} />
+                <Route path = '/leaderboard' component = {LeaderBoard} />
+                <Route path = '/home' component ={Home} />
+                <Route path = '/add' component ={NewQuestion} />
+                <Route path = '/question/:id' component ={Question} />
+                <Route path = '/questions/:id' component ={QuestionTo} />
+				<Route component={Page404}/>
+      		</Switch>
+      		
       </div>
       </Router>
       
