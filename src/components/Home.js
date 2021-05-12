@@ -1,7 +1,6 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import Button from 'react-bootstrap/Button'
-import ToggleButton from 'react-bootstrap/ToggleButton'
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import Question from "./Question"
 
@@ -45,7 +44,7 @@ class Home extends Component {
     
 
 	render(){
-    	const { users, authedUser, questions, answeredQ, unansweredQ } = this.props
+    	const { authedUser, answeredQ, unansweredQ } = this.props
  
     	return(
           <div>

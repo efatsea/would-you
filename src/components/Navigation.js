@@ -53,6 +53,7 @@ class Navigation extends Component {
                           src={userAvatar}
                           width = "50"
                           heigth = "50"
+						  alt="Authed User Profile "
                         />
 					</li>
                     <li><Button style={{ backgroundColor:"#bf6464", border:"0px"}} onClick={this.handleClick}>

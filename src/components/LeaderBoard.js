@@ -8,7 +8,7 @@ import Navigation from "./Navigation"
 class LeaderBoard extends Component {
   	
 	render(){
-    	const { users, authedUser, questions, names, keyl } = this.props
+    	const { users, authedUser, keyl } = this.props
         const colors =[
           "#bf9e32",
           "#a8a9ad",

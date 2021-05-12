@@ -6,9 +6,9 @@ The game is set up for 3 players. Each player can make new questions and answer 
 ##  Installation
 * Install the game with `npm install`
 * And then type `npm start`
-* Open your browser au url `localhost:3000`
+* Open your browser at url `localhost:3000`
 
 That's it! You are ready to play the game!
 
 
-This project was bootstrapped with [Create React App]
+This project was bootstrapped with Create React App

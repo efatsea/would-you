@@ -40,12 +40,11 @@ class QuestionTo extends Component {
         }
       
       	const {
-        		id, author, timestamp, optionOne, optionTwo
+        		id, optionOne, optionTwo
         } = question
 		if (authedUser) {
           const ids = Object.keys(users[authedUser].answers)
           var userAvatar =  users[authorUser].avatarURL
-          const hasClicked = this.state.hasClicked
           var idA = ids.filter(i => i===id)
           const idStr = `"${id}"`
           var answ = users[authedUser].answers.idStr

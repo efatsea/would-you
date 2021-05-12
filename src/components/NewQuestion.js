@@ -53,7 +53,7 @@ class NewQuestion extends Component {
           <Redirect to="/dashboard" />
           )
         }
-    	const { users, authedUser, questions } = this.props
+    	const {  authedUser } = this.props
 
     	return(
           	authedUser === "" || authedUser === null  ? <Alerting/> : 
@@ -89,9 +89,7 @@ class NewQuestion extends Component {
 }
 
 function mapStateToProps ({ authedUser, users, questions }) {
-	const keyl = Object.keys(users);
-    const names = keyl.map((id)=>(users[id].name));
-    
+	    
 	return {
     	authedUser,
 		users,

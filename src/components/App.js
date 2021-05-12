@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Switch } from 'react-router'
 import '../style.css'
 import Dashboard from "./Dashboard"
@@ -20,7 +20,6 @@ class App extends Component {
   	this.props.handleInitialData();
   }
   render() {
-    const { authedUser } = this.props;
   	return (
       <Router>
       	<div className="App">

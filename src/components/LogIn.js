@@ -3,9 +3,8 @@ import { connect } from "react-redux"
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { Redirect } from 'react-router-dom'
-
 import { setAuthedUser } from "../actions/authedUser"
-import Dashboard from "./Dashboard"
+
 
 
 class LogIn extends Component {
@@ -43,21 +42,16 @@ class LogIn extends Component {
 	for (var i = 0; i < names.length; i++) {
         usersLength[i] =i
     }
-	console.log(this.state)
-	
-    
+
   	return (
       <div className="login">
       	<h2>Welcome to the Would you... App!</h2>
-      	<p>Please sign in to continue</p>
       	<br/>
-      	<label>Sign In</label>
+      	<h4>Please log in to continue</h4>
+      	<br/>
       	<Form onSubmit={this.handleClick}>
-          <Form.Label className="my-1 mr-2" htmlFor="loginform">
-          </Form.Label>
           <Form.Control
             as="select"
-            className="my-1 mr-sm-2"
             id="loginform"
             custom
 			onChange={(e) => this.handleChange(e)}

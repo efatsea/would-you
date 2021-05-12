@@ -25,7 +25,7 @@ class Question extends Component {
         }
      
       	const {
-        		id, author, timestamp, optionOne, optionTwo
+        		id, author, optionOne
         } = question
 		
 		const { hasClicked } = this.state

@@ -1,21 +1,18 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import Form from 'react-bootstrap/Form'
-import ListGroup from 'react-bootstrap/ListGroup'
-import Card from 'react-bootstrap/Card'
 import ProgressBar from 'react-bootstrap/ProgressBar'
 
 class Poll extends Component {
   	
 	render(){
-    	const { users, answer, question, authorUser, authedUser } = this.props
+    	const { users, answer, question, authorUser } = this.props
         
         if ( question === null ) {
         	return <p>This question does not exist</p>
         }
       
       	const {
-        		id, author, timestamp, optionOne, optionTwo
+        		author, optionOne, optionTwo
         } = question
         
         const voteOne = optionOne.votes.length
