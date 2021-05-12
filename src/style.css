@@ -123,3 +123,37 @@ li {
   	padding: 0.2em;
   	
 }
+
+.leader {
+	border: 2px solid #5f7daf;
+  	border-radius: 20px;
+  	margin: 0.5em;
+}
+
+.leader-li {
+	text-align: center;
+  	width: 100%;
+}
+.leader-li img {
+	width: 30%;
+  	border-right: 1px solid #5f7daf;
+  	padding-right: 0.5em;
+}
+
+.leader-li h3 {
+	border-top-left-radius: 20px;
+  	border-top-right-radius: 20px;
+}
+
+.score {
+	margin-left:2em;
+  	padding-left: 1.5em;
+  	padding-right: 1.5em;
+  	border-left: 1px solid #5f7daf;
+  
+  	
+}
+.quest {
+	text-align: center;
+  	width: 40%;
+}
