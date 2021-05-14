@@ -36,7 +36,7 @@ class QuestionTo extends Component {
 	render(){
     	const { users, question, authorUser, authedUser } = this.props
         if ( !question) {
-        	return <Page404/>
+        	return <Alerting/>
         }
       
       	const {
