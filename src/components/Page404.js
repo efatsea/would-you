@@ -28,6 +28,8 @@ class Page404 extends Component {
   	return (
           <div>
           	<h4>Something went wrong... :(
+      			<br/>
+      			Error 404: Page not found!
 				<br/>
 				Return Home</h4>
             <Button onClick={this.handleClick}>

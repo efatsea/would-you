@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom'
 import '../style.css'
 import Alert from 'react-bootstrap/Alert'
 import Button from 'react-bootstrap/Button'
+import Page404 from "./Page404"
 
 
 
@@ -21,12 +22,19 @@ class Alerting extends Component {
   }
   render() {
     const { clicked } = this.state
+    const url = !this.props.url ? "Page404"  : this.props.url
         if (clicked === true) {
           return (
-          <Redirect to="/" />
+          <Redirect to={{
+            pathname :  "/",
+            state : { 
+            	url: url
+            }
+            }}/>
           )
         }
   	return (
+       
       <Alert variant="danger">
         Please Log in!
          <br/>

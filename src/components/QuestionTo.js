@@ -49,9 +49,9 @@ class QuestionTo extends Component {
           const idStr = `"${id}"`
           var answ = users[authedUser].answers.idStr
 		}
-		
+		const url = `questions/${id}`
     	return(
-          	authedUser === "" || authedUser === null  ? <Alerting/> : 
+          	authedUser === "" || authedUser === null  ? <Alerting url ={url}/> : 
         	<div>
           		<Navigation/>
           		{ idA[0]===id ? <Poll id= {id} answer={answ}/> 

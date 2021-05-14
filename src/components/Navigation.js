@@ -25,7 +25,12 @@ class Navigation extends Component {
       	const { logoutClicked } = this.state
         if (logoutClicked === true) {
           return (
-          <Redirect to="/" />
+          <Redirect to={{
+            pathname :  "/",
+            state : { 
+            	url: "/dashboard"
+            }
+            }}/>
           )
         }
       

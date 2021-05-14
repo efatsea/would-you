@@ -31,10 +31,12 @@ class LogIn extends Component {
   }
 
   render() {
+    const url = this.props.location.state ? this.props.location.state.url : "/dashboard"
+    console.log(url)
     const { hasSubmit } = this.state
     if (hasSubmit === true) {
       return (
-      <Redirect to="/dashboard" />
+      <Redirect to= {`${url}`} />
       )
     }
     const {names, userAvatar, keys} = this.props

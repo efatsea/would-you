@@ -14,7 +14,7 @@ class LeaderBoard extends Component {
           "#a8a9ad",
           "#cd7f32"]
     	return(
-          authedUser === "" || authedUser === null  ? <Alerting/> : 
+          authedUser === "" || authedUser === null  ? <Alerting url = "/leaderboard"/> : 
         	<div className = "LeaderBoard">
           	<Navigation/>
               <ul>

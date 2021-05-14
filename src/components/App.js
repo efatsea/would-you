@@ -10,6 +10,7 @@ import Question from './Question'
 import QuestionTo from './QuestionTo'
 import LeaderBoard from './LeaderBoard'
 import NewQuestion from './NewQuestion'
+import Alerting from "./Alerting"
 import Page404 from "./Page404"
 import { handleInitialData } from "../actions/shared";
 
@@ -31,7 +32,8 @@ class App extends Component {
                 <Route path = '/add' component ={NewQuestion} />
                 <Route path = '/question/:id' component ={Question} />
                 <Route path = '/questions/:id' component ={QuestionTo} />
-				<Route component={Page404}/>
+				<Route path = '/page404' component ={Page404} />
+				<Route component={Alerting}/>
       		</Switch>
       		
       </div>

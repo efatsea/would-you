@@ -56,7 +56,7 @@ class NewQuestion extends Component {
     	const {  authedUser } = this.props
 
     	return(
-          	authedUser === "" || authedUser === null  ? <Alerting/> : 
+          	authedUser === "" || authedUser === null  ? <Alerting url = "/add"/> : 
         	<div className = "NewQuestion">
           		<Navigation/>
           		<h1>Create New Question</h1>

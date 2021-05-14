@@ -9,7 +9,7 @@ class Dashboard extends Component {
 	render(){
       	const { authedUser } = this.props
     	return(
-          	authedUser === "" || authedUser === null  ? <Alerting/> : 
+          	authedUser === "" || authedUser === null  ? <Alerting url="/dashboard"/> : 
         	<div>
           		<Navigation/>
           		<Home/>
